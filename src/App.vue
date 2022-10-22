@@ -1,31 +1,50 @@
-<template>
-  <div class="container" style="padding: 50px 0 100px 0">
-    <Profile v-if="store.user" />
-    <Auth v-else />
-  </div>
-</template>
-
 <script>
-  import { store } from './store'
-  import { supabase } from './supabase'
-  import Auth from './components/Auth.vue'
-  import Profile from './components/Profile.vue'
+import { defineComponent, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+import { store } from './store'
+import { supabase } from './supabase'
+import Auth from './components/Auth.vue'
+import Profile from './components/Profile.vue'
+import { useUserStore } from './stores/user'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
-  export default {
-    components: {
-      Auth,
-      Profile,
-    },
 
-    setup() {
-      store.user = supabase.auth.user()
-      supabase.auth.onAuthStateChange((_, session) => {
-        store.user = session.user
-      })
+export default defineComponent({
+  components: {
+    Auth,
+    Profile,
+    Navbar,
+    Footer
+},
 
-      return {
-        store,
+  setup() {
+    const router = useRouter()
+    const userStore = useUserStore()
+    const { user } = storeToRefs(userStore)
+    onMounted(async () => {
+      console.log("Mounted")
+      try {
+        await userStore.fetchUser()
+        if (!user.value) console.log('Nos despertamos')
       }
-    },
-  }
+      catch { console.log('el error') }
+    })
+    /* user = supabase.auth.user()
+     supabase.auth.onAuthStateChange((_, session) => {
+      store.user = session.user
+     }) */
+
+    return {
+      store,
+    }
+  },
+})
 </script>
+
+<template>
+  <Navbar />
+  <Footer />
+  <router-view />
+</template>
