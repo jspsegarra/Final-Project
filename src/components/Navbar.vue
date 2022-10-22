@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,5 +25,10 @@
 </template>
 
 <style>
-
+.navbar {
+    background-color: rgb(226, 198, 43);
+}
+.nav-link active :hover {
+color: red;
+}
 </style>

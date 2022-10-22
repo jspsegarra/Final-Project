@@ -130,6 +130,6 @@ export default {
 
 <style>
 .form-widget {
-    background-color: blue;
+    background-color: rgb(154, 154, 244);
 }
 </style>

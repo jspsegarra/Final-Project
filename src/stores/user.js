@@ -12,13 +12,19 @@ export const useUserStore = defineStore("user", {
             const { data: { user } } = await supabase.auth.getUser()
             this.user = user;
         },
-        async signUp(email, password) {
-            const { user, error } = await supabase.auth.signUp({
+        async signUp(email, password, fname, lname, phone) {
+            const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
-            });
+                options: {
+                    data: {
+                      first_name: fname,
+                      last_name: lname,
+                      phone: phone,
+                    }
+                  }
+                })
             if (error) throw error;
-            if (user) this.user = user;
         },
         async signIn(email, password) {
             const { user, error } = await supabase.auth.signInWithPassword({

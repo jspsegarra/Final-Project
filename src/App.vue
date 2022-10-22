@@ -45,6 +45,6 @@ export default defineComponent({
 
 <template>
   <Navbar />
-  <Footer />
   <router-view />
+  <Footer />
 </template>
