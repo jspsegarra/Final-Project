@@ -1,3 +1,4 @@
+
 <template>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -15,10 +16,7 @@
                         <a class="nav-link active" href="#">About my project</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                
             </div>
         </div>
     </nav>
@@ -28,7 +26,6 @@
 .navbar {
     background-color: rgb(226, 198, 43);
 }
-.nav-link active :hover {
-color: red;
-}
+
+
 </style>

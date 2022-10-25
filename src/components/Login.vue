@@ -1,13 +1,15 @@
 <script setup>
 import { ref } from 'vue'
 import { useUserStore } from '../stores/user.js'
+import router from '../router';
+
 const email = ref('')
 const password = ref('')
 const userStore = useUserStore()
 async function handleSubmit() {
     try {
         await userStore.signIn(email.value, password.value)
-        console.log('registrado')
+        router.push({path:'/index'})
     }
     catch (error) { console.log('fallamos', error) }
 }

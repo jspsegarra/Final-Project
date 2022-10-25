@@ -1,5 +1,6 @@
 <script setup> 
 import { ref } from 'vue'
+import router from '../router';
 import { useUserStore } from '../stores/user.js'
 const email = ref('')
 const fname = ref('')
@@ -10,7 +11,7 @@ const userStore = useUserStore()
 async function handleSubmit (){
     try {
         await userStore.signUp(email.value, password.value, fname.value, lname.value, phone.value)
-        console.log('registrado')
+        router.push({path:'/home'}) 
     }
     catch(error) {console.log ('fallamos', error)}
 }
@@ -35,10 +36,10 @@ async function handleSubmit (){
         </div>
         <div class="mb-3">
             <label for="InputPhone" class="form-label">Phone</label>
-            <input type="phone" class="form-control" v-model="phone" id="Phone" aria-describedby="phoneHelp">
+            <input type="phone" class="form-control" v-model="phone" id="Phone" maxlenght="9" aria-describedby="phoneHelp">
         </div>
         <label for="inputPassword" class="form-label">Password</label>
-        <input type="password" id="inputPassword" v-model="password" class="form-control" aria-describedby="passwordHelpBlock">
+        <input type="password" id="inputPassword" v-model="password" maxlength="20" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
             special characters, or emoji.

@@ -3,12 +3,8 @@
 import { supabase } from '../supabase'
 import { store } from '../store'
 import { onMounted, ref } from 'vue'
-import Avatar from './Avatar.vue'
 
 export default {
-    components: {
-    Avatar,
-},
     setup() {
         const loading = ref(true)
         const username = ref('')
