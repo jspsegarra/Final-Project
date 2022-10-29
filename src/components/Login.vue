@@ -9,7 +9,7 @@ const userStore = useUserStore()
 async function handleSubmit() {
     try {
         await userStore.signIn(email.value, password.value)
-        router.push({path:'/index'})
+        router.push({path:'/create-task'})
     }
     catch (error) { console.log('fallamos', error) }
 }

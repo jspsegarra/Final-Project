@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import ('../components/Login.vue')
+    },
+    {
+      path: '/create-task',
+      name: 'createTask',
+      component: () => import ('../components/Task.vue')
     }
   ]
 })
