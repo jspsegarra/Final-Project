@@ -33,8 +33,10 @@ const deleteTask = async (task) => {
 <template>
     <section class="container">
     <h1 class="beautyTitle">Please update your tasks here!</h1>
+    <p class="table-text"><b>Is it completed?</b></p>
     <form @submit.prevent="handleSubmit" class="newTask input-group" method="post">
         <input type="text" class="input-group-field" v-model="title" placeholder="New task">
+        
         <input type="checkbox" v-model="isComplete">
         <span class="input-group-button">
             <button class="button" type="submit">
@@ -66,5 +68,13 @@ button :hover {
 }
 .buttond {
     margin-bottom: 50px;
+}
+.newTask {
+    justify-content: space-evenly;
+}
+.table-text{
+    position: relative;
+    left: 660px;
+    font-style: bolder;
 }
 </style>

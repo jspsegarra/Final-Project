@@ -29,7 +29,7 @@ export const useTaskStore = defineStore('tasks', {
         .from('tasks')
         .delete()
         .eq({
-          id: id
+          id: id,
         })
     }
   }
