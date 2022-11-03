@@ -7,6 +7,7 @@ export const useTaskStore = defineStore('tasks', {
   state: () => ({
     tasks: null
   }),
+
   actions: {
     async fetchTasks() {
       const { data: tasks } = await supabase
@@ -32,14 +33,17 @@ export const useTaskStore = defineStore('tasks', {
           'id', id
         )
     },
-    async editTask(title) {
-      const { error } = await supabase
-        .from('tasks')
-        .update()
-        .eq(
-          'title', title,
-          'id', id
-        )
+    async editTask(id, title) {
+      try {
+        const { error } = await supabase
+          .from('tasks')
+          .update({ title: title })
+          .eq('id', id)
+        this.errors = null;
+        if (error) throw error
+      } catch (error) {
+        this.errors = "Try again later."
+      }
     }
   }
-});
+}); 

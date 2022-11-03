@@ -29,11 +29,23 @@ const deleteTask = async (task) => {
     await taskStore.fetchTasks();
 };
 
-const editTask = async (task) => {
-    await taskStore.editTask(task.title)
-    console.log('editando')
-    fetchTasks();
-};
+const editTask = async (id, newTitle) => {
+    try {
+        if (newTitle) {
+            await taskStore.editTask(id, newTitle)
+            newTitle = ''
+            if (errorMsg.value != null) {
+                showError.value = true
+            }
+        }
+        else {
+            errorMsg.value = "Try again later."
+            showError.value = true
+        }
+    } catch (edit) {
+        console.log('editado')
+    }
+}
 </script>
 
 <template>
