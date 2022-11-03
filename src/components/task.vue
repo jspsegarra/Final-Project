@@ -35,6 +35,7 @@ const editTask = async (id, newTitle) => {
         if (newTitle) {
             await taskStore.editTask(id, newTitle)
             newTitle = ''
+            /* He cogido el código de una página web pero no querría poner lo de los errores, pero si lo quito me da error */
             if (errorMsg.value != null) {
                 showError.value = true
             }
