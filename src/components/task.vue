@@ -14,7 +14,7 @@ async function handleSubmit() {
     try {
         await taskStore.newTask(title.value, isComplete.value, user._object.user.id)
         await taskStore.fetchTasks()
-
+        console.log('prueba')
     }
     catch (error) { console.log('fallamos', error) }
 }
@@ -42,8 +42,8 @@ const editTask = async (id, newTitle) => {
             errorMsg.value = "Try again later."
             showError.value = true
         }
-    } catch (edit) {
-        console.log('editado')
+    } catch (error) {
+        console.log(error)
     }
 }
 </script>
@@ -60,14 +60,13 @@ const editTask = async (id, newTitle) => {
                     <i class="fa-solid fa-file-circle-plus"></i> Add </button>
             </span>
         </form>
-        <div>
+        <div v-for="task in tasks">
+            <h2> {{ task.title }}</h2>
+            <button class="buttond">
+                <i class="fa-solid fa-xmark" @click="deleteTask(task)">Delete</i></button>
             <button class="buttond" @click="editTask(task)">Edit
             </button>
-            <button class="buttond">
-                <i class="fa-solid fa-xmark" @click="deleteTask(task)">Delete</i>
-            </button>
         </div>
-
     </section>
 </template>
 
