@@ -6,6 +6,7 @@ import { useUserStore } from '../stores/user.js'
 import { storeToRefs } from 'pinia'
 const isComplete = ref(false)
 const title = ref('')
+const newTitle = ref('')
 const taskStore = useTaskStore()
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)

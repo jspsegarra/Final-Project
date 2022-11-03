@@ -13,6 +13,10 @@ Gracias Cristian y Pablo por las horas que os habréis pasado conmigo ayudándom
 
 Quién sabe... ¡quizás algún día podamos contarnos cómo han seguido nuestros caminos profesionales!
 
+## DEPLOY
+
+Como bien sabe Cristian ni he podido hacer deploy por un error que me sale de conexión del Task.vue en el index.js.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
